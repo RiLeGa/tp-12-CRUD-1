@@ -27,15 +27,10 @@
 						<h2 class="product-detail-title"><%= detalle.name %></h2>
 						
 							<p class="product-detail-price small">
-								<span>$<%= detalle.price %></span>
-								/
-								<b><%= detalle.discount %>% OFF</b>
+								<span><%=toThousand(detalle.discount > 0 ? `$${detalle.price}` : ' '  )%></span> <%= detalle.discount > 0 ? `${detalle.discount}% OFF` : ' ' %>
 							</p>
 							<p class="product-detail-price">
-								$<%= detalle.price - (detalle.price * detalle.discount / 100)%>
-							</p>
-							<p class="product-detail-price">
-								$<%= detalle.price %>
+								$<%= Math.round(detalle.price - (detalle.price * detalle.discount / 100))%>
 							</p>
 
 						<ul class="actions-list">
@@ -52,8 +47,8 @@
 						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
 						<hr>
 
-						<a href="/products/edit/<%= detalle.it %>" class="action-button edit">EDITAR PRODUCTO</a>
-						<form action="/products/delete/<%= detalle.it %>" method="POST" style="display: inline-flex">
+						<a href="/products/edit/<%= detalle.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+						<form action="/products/<%= detalle.id %>?_method=delete" method="POST" style="display: inline-flex">
 							<button type="submit" class="action-button delete">ELIMINAR</button>
 						</form>
 					</article>

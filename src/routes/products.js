@@ -9,7 +9,7 @@ const {detail, index, create, store, edit, update, destroy} = require('../contro
 router.get('/', index); 
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/crear/', create); 
+router.get('/create', create); 
 router.post('/', store); 
 
 
@@ -17,7 +17,7 @@ router.post('/', store);
 router.get('/detail/:id', detail); 
 
 /*** EDIT ONE PRODUCT ***/ 
-router.get('/:id/editar', edit); 
+router.get('/edit/:id', edit); 
 router.put('/:id', update); 
 
 
